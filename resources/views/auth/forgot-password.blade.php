@@ -39,8 +39,12 @@
                         <h4 class="text-muted text-center font-size-18"><b>Reset Password</b></h4>
     
                         <div class="p-3">
+                            <center>
+                          <h1></h1>
+                        <h1>😂</h1>
+                        </center>
                            
-                                <x-auth-session-status class="mb-4" :status="session('status')" />
+                                <!-- <x-auth-session-status class="mb-4" :status="session('status')" />
                                  <form class="form-horizontal mt-3" method="POST" action="{{ route('password.email') }}">
                                   @csrf
                                 
@@ -59,7 +63,7 @@
                                         <button class="btn btn-info w-100 waves-effect waves-light" type="submit">Send Email</button>
                                     </div>
                                 </div>
-                            </form>
+                            </form> -->
                         </div>
                     </div>
                     <!-- end cardbody -->

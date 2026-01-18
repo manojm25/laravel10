@@ -3,7 +3,7 @@
                     <div class="d-flex">
                         <!-- LOGO -->
                         <div class="navbar-brand-box">
-                            <a href="index.html" class="logo logo-dark">
+                            <a href="{{url('/dashboard')}}" class="logo logo-dark">
                                 <span class="logo-sm">
                                     <img src="{{asset('backend')}}/assets/images/logo-sm.png" alt="logo-sm" height="22">
                                 </span>
@@ -12,7 +12,7 @@
                                 </span>
                             </a>
 
-                            <a href="index.html" class="logo logo-light">
+                            <a href="{{url('/dashboard')}}" class="logo logo-light">
                                 <span class="logo-sm">
                                     <img src="{{asset('backend')}}/assets/images/logo-sm.png" alt="logo-sm-light" height="22">
                                 </span>
@@ -39,8 +39,13 @@
                     
                     <!-- Using blade syntax inside this we can get the data using  id itself -->
                     @php
+                    if (!Auth::check()) {
+                    header("Location: " . route('login'));
+                    exit;
+                    }else{
                      $id = Auth::user()->id;
                      $adminData = App\Models\User::find($id);
+                    }
                     @endphp
 
                     <div class="d-flex">

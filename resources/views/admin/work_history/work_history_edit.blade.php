@@ -1,0 +1,107 @@
+@extends('admin.admin_master')
+@section('admin')
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+
+                                        <h4 class="card-title">Edit Work History | Update Page</h4>
+
+        <form class="form-horizontal mt-3" method="POST" action="{{route('update.work.history')}}" enctype="multipart/form-data">
+            @csrf
+            <input type="hidden" name="id" value="{{$workhistory->id}}">
+           
+        <div class="row mb-3">
+            <label for="example-text-input" class="col-sm-2 col-form-label">Job Title</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" placeholder="" id="job_title" value="{{$workhistory->job_title}}" name="job_title">
+                @error('job_title')
+                <span class="text-danger">{{$message}}</span>
+                @enderror
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <label for="example-text-input" class="col-sm-2 col-form-label">Company Name</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" placeholder="" id="company_name" value="{{$workhistory->company_name}}" name="company_name">
+                @error('company_name')
+                <span class="text-danger">{{$message}}</span>
+                @enderror
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <label for="example-text-input" class="col-sm-2 col-form-label">Service Period</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" placeholder="" id="service_period" value="{{$workhistory->service_period}}" name="service_period">
+                @error('service_period')
+                <span class="text-danger">{{$message}}</span>
+                @enderror
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <label for="example-search-input" class="col-sm-2 col-form-label">Description</label>
+            <div class="col-sm-10">
+                <textarea id="elm1" name="description">{{$workhistory->description}}</textarea>
+            </div>
+        </div>
+
+
+         <div class="row mb-3">
+            <label for="example-email-input" class="col-sm-2 col-form-label">Company Logo</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="file"  id="company_logo" value="{{$workhistory->company_logo}}" name="company_logo">
+                 @error('company_logo')
+                <span class="text-danger">{{$message}}</span>
+                @enderror
+            </div>
+        </div>
+
+        <div class="row mb-3">
+             <label for="example-email-input" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10">
+                <img id="showImage" class="rounded avatar-lg" src="{{(!empty($workhistory->company_logo))? url($workhistory->company_logo): url('backend/assets/images/no_image.jpg')}}" alt="Card image cap">
+            </div>
+        </div>
+        <div class="form-group mb-3 text-center row mt-3 pt-1">
+    <div class="col-2">
+        <button class="btn btn-info btn-rounded w-100 waves-effect waves-light" type="submit">Submit</button>
+    </div>
+</div>
+
+        </form>
+                                        <!-- end row -->
+                                      
+                                        <!-- end row -->
+                                    </div>
+                                </div>
+                            </div> <!-- end col -->
+                        </div>
+    
+</div>
+</div> 
+
+<script>
+    function previewImage(input, target) {
+    if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = e => $(target).attr('src', e.target.result);
+        reader.readAsDataURL(input.files[0]);
+    }
+   }
+
+   $('#company_logo').on('change', function () {
+    previewImage(this, '#showImage');
+});
+</script>
+
+@endsection

@@ -39,7 +39,11 @@
                         <h4 class="text-muted text-center font-size-18"><b>Reset Password</b></h4>
     
                         <div class="p-3">
-                            <form class="form-horizontal mt-3" method="POST" action="{{ route('password.store') }}">
+                            <center>
+                          <h1></h1>
+                        <h1>😂</h1>
+                        </center>
+                            <!-- <form class="form-horizontal mt-3" method="POST" action="{{ route('password.store') }}">
                                  @csrf
     <input type="hidden" name="token" value="{{ $request->route('token') }}">
                                 <div class="form-group mb-3 row">
@@ -70,7 +74,7 @@
                                         <button class="btn btn-info w-100 waves-effect waves-light" type="submit">Reset Password</button>
                                     </div>
                                 </div>
-                            </form>
+                            </form> -->
                         </div>
                         <!-- end -->
                     </div>
